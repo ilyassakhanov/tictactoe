@@ -1,8 +1,8 @@
 package dpij;
 
 public interface iBoard {
-    void setPiece();
-    void getPiece();
-    void isFull();
-    void getXSize();
+    void setPiece(Coord coord, iPlayer player);
+    iPlayer getPiece(Coord coord);
+    boolean isFull();
+    int getXSize();
 }

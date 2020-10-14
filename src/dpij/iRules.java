@@ -1,5 +1,7 @@
 package dpij;
 
 public interface iRules {
-    void checkWinner(Board board);
+    iPlayer checkWinner(iBoard board);
+    boolean isGameFinished(iBoard board);
+
 }

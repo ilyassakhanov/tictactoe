@@ -17,16 +17,17 @@ public class TicTacToe {
     }
 
     void startGame() {
-        iPlayer currentPlayer = player1;
-        while (!rules.isGameFinished()) {
-            ui.showBoard(board);
-            currentPlayer.makeMove();
+        iPlayer currentPlayer = player2;
+        do {
             if (currentPlayer == player1) {
                 currentPlayer = player2;
             } else {
                 currentPlayer = player1;
             }
-        }
+            ui.showBoard(board);
+            currentPlayer.makeMove();
+
+        } while (!rules.isGameFinished(board));
     }
 
 }

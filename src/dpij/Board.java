@@ -1,23 +1,39 @@
 package dpij;
 
-public class Board implements iBoard{
-    @Override
-    public void setPiece() {
+import java.util.ArrayList;
 
+public class Board implements iBoard {
+    //TODO multi-dimentional arrayList
+    //ArrayList<iPlayer> arrBoard = new ArrayList();
+    iPlayer[][] arrBoard;
+
+    @Override
+    public void setPiece(Coord coord, iPlayer player) {
+        arrBoard[coord.x][coord.y] = player;
     }
 
     @Override
-    public void getPiece() {
-
+    public iPlayer getPiece(Coord coord) {
+        return arrBoard[coord.x][coord.y];
     }
 
     @Override
-    public void isFull() {
-
+    public boolean isFull() {
+        for (int x = 0; x < arrBoard.length; x++) {
+            for (int y = 0; y < arrBoard[x].length; y++) {
+                if (arrBoard[x][y] == null) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
-    @Override
-    public void getXSize() {
 
+    //TODO ask iff this should return area(plocha) or a lenght of x
+    @Override
+    public int getXSize() {
+        return arrBoard.length*arrBoard[0].length;
     }
 }
+
