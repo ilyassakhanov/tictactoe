@@ -29,11 +29,9 @@ public class Board implements iBoard {
         return true;
     }
 
-
-    //TODO ask iff this should return area(plocha) or a lenght of x
     @Override
     public int getXSize() {
-        return arrBoard.length*arrBoard[0].length;
+        return arrBoard.length;
     }
 }
 
