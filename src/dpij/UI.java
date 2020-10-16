@@ -1,8 +1,8 @@
 package dpij;
 
-public class UI implements  iUI{
+public class UI implements iUI{
     @Override
-    public void showBoard(Board board) {
+    public void showBoard(iBoard board) {
 
     }
 
