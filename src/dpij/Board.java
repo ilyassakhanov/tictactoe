@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Board implements iBoard {
     //TODO multi-dimentional arrayList
     //ArrayList<iPlayer> arrBoard = new ArrayList();
-    iPlayer[][] arrBoard;
+    iPlayer[][] arrBoard = new iPlayer[3][3];
 
     @Override
     public void setPiece(Coord coord, iPlayer player) {

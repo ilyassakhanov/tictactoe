@@ -1,23 +1,50 @@
 package dpij;
 
+import java.util.Scanner;
+
 public class UI implements iUI{
     @Override
     public void showBoard(iBoard board) {
-
+        Coord coord = new Coord();
+        System.out.print("-------\n");
+        for (int x = 0; x < board.getXSize(); x++) {
+            for (int y = 0; y < board.getXSize(); y++) {
+                coord.x = x;
+                coord.y = y;
+                if (board.getPiece(coord) == null){
+                    System.out.printf("|%s", " ");
+                } else System.out.printf("|%s", board.getPiece(coord));
+            }
+            System.out.print("|");
+            System.out.println();
+            System.out.println("-------");
+        }
     }
 
     @Override
-    public void getInput() {
-
+    public Coord getInput() {
+        Scanner sc = new Scanner(System.in);
+        Coord coord = new Coord();
+        System.out.print("Enter the coordinate (ex: 1,2): ");
+        String inputStr = sc.nextLine();
+        try {
+            String[] arrInput = inputStr.split(",");
+            coord.x = Integer.parseInt(arrInput[0]);
+            coord.y = Integer.parseInt(arrInput[1]);
+            return coord;
+        } catch (Exception e) {
+            System.out.println("Something went wrong, try again");
+            return null;
+        }
     }
 
     @Override
     public void showDraw() {
-
+        System.out.println("The game is draw!");
     }
 
     @Override
-    public void showWinner() {
-
+    public void showWinner(iPlayer winner) {
+        System.out.println("Player " + winner.getPiece()+ " is a winner!");
     }
 }

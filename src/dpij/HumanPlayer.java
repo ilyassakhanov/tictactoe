@@ -2,8 +2,9 @@ package dpij;
 
 public class HumanPlayer implements iPlayer {
     @Override
-    public void getPiece() {
+    public char getPiece() {
 
+        return 'x';
     }
 
     @Override

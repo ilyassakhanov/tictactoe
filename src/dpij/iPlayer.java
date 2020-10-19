@@ -1,6 +1,6 @@
 package dpij;
 
 public interface iPlayer {
-    void getPiece();
+    char getPiece();
     void makeMove();
 }

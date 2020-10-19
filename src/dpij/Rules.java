@@ -4,10 +4,16 @@ public class Rules implements iRules {
     @Override
     public iPlayer checkWinner(iBoard board) {
         //TODO return: p1, p2, null, new player (for draw)
-        return null;
+        iPlayer winner = null;
+        if(checkDiagonal(board) != null){
+            winner = checkDiagonal(board);
+        } else if(checkHorizVert(board) != null){
+            winner = checkHorizVert(board);
+        }
+        return winner;
     }
 
-    iPlayer checkDiagonal(iBoard board) {
+    public iPlayer checkDiagonal(iBoard board) {
         iPlayer player = null;
         Coord coord = new Coord();
         // check from top left to bottom right
@@ -47,7 +53,8 @@ public class Rules implements iRules {
         return player;
     }
 
-    iPlayer checkHorizVert(iBoard board) {
+
+    public iPlayer checkHorizVert(iBoard board) {
         iPlayer player = null;
         Coord coord = new Coord(); // TODO good design?
         for (int x = 0; x < board.getXSize(); x++) {

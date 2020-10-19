@@ -2,7 +2,7 @@ package dpij;
 
 public interface iUI {
     void showBoard(iBoard board);
-    void getInput();
+    Coord getInput();
     void showDraw();
-    void showWinner();
+    void showWinner(iPlayer player);
 }
