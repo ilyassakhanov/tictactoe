@@ -19,6 +19,8 @@ public class TicTacToe implements iTicTacToe {
     @Override
     public void startGame() {
 
+//        ui.askSize(board);
+//
 //        iPlayer currentPlayer = player2;
 //
 //        while (true) {

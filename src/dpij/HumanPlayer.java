@@ -7,6 +7,7 @@ public class HumanPlayer implements iPlayer {
         return 'x';
     }
 
+    // TODO dependency?
     @Override
     public void makeMove() {
         UI ui = new UI();

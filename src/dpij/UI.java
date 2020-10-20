@@ -6,7 +6,11 @@ public class UI implements iUI{
     @Override
     public void showBoard(iBoard board) {
         Coord coord = new Coord();
-        System.out.print("-------\n");
+        System.out.print("-");
+        for (int i = 0; i < board.getXSize(); i++) {
+            System.out.print("--");
+        }
+        System.out.println();
         for (int x = 0; x < board.getXSize(); x++) {
             for (int y = 0; y < board.getXSize(); y++) {
                 coord.x = x;
@@ -17,7 +21,23 @@ public class UI implements iUI{
             }
             System.out.print("|");
             System.out.println();
-            System.out.println("-------");
+            System.out.print("-");
+            for (int i = 0; i < board.getXSize(); i++) {
+                System.out.print("--");
+            }
+            System.out.println();
+        }
+    }
+
+    // TODO interface design feasible?
+    public void askSize(iBoard board) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the board size (ex: 3 for a 3x3 board): ");
+        String sizeStr = sc.nextLine();
+        try {
+            board.setXSize(Integer.parseInt(sizeStr));
+        } catch (Exception e) {
+            System.out.println("Something went wrong, try again");
         }
     }
 

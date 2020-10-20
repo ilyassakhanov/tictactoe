@@ -3,8 +3,12 @@ package dpij;
 public class Rules implements iRules {
     @Override
     public iPlayer checkWinner(iBoard board) {
-        //TODO return: p1, p2, null, new player (for draw)
+        //  new player (for draw)
         iPlayer winner = null;
+        if(board.isFull()) {
+            iPlayer drawPlayer = new HumanPlayer();
+            return drawPlayer;
+        }
         if(checkDiagonal(board) != null){
             winner = checkDiagonal(board);
         } else if(checkHorizVert(board) != null){

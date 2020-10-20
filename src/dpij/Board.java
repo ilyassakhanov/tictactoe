@@ -3,9 +3,11 @@ package dpij;
 import java.util.ArrayList;
 
 public class Board implements iBoard {
+
     //TODO multi-dimentional arrayList
     //ArrayList<iPlayer> arrBoard = new ArrayList();
-    iPlayer[][] arrBoard = new iPlayer[3][3];
+    private int boardSize;
+    iPlayer[][] arrBoard = new iPlayer[5][5];
 
     @Override
     public void setPiece(Coord coord, iPlayer player) {
@@ -32,6 +34,11 @@ public class Board implements iBoard {
     @Override
     public int getXSize() {
         return arrBoard.length;
+    }
+
+    @Override
+    public void setXSize(int boardSize) {
+        this.boardSize = boardSize;
     }
 }
 
