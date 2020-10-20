@@ -14,6 +14,7 @@ public class TicTacToe implements iTicTacToe {
         rules = new Rules();
         player1 = new HumanPlayer(ui);
         player2 = new ComputerPlayer(board);
+        // TODO setPiece in HumanPlayer class but in the interface? (NullPointerException without setting the pieces)
     }
 
     @Override
@@ -31,7 +32,7 @@ public class TicTacToe implements iTicTacToe {
             }
 
             ui.showBoard(board);
-            currentPlayer.makeMove();
+            board.setPiece(currentPlayer.makeMove(), currentPlayer);
 
             status = rules.checkWinner(board);
 

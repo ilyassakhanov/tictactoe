@@ -24,4 +24,12 @@ public class HumanPlayer implements iPlayer {
     public String toString() {
         return String.valueOf(piece.pieceChar);
     }
+
+    //TODO
+    public void setPiece(char pieceChar) {
+        Piece piece = new Piece();
+     //   piece.pieceChar = pieceChar;
+        piece.pieceChar = 'x';
+        this.piece = piece;
+    }
 }

@@ -24,4 +24,8 @@ public class ComputerPlayer implements iPlayer{
     public String toString() {
         return String.valueOf(piece.pieceChar);
     }
+
+    public void setPiece(Piece piece) {
+        this.piece = piece;
+    }
 }

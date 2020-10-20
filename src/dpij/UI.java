@@ -15,7 +15,7 @@ public class UI implements iUI{
             for (int y = 0; y < board.getXSize(); y++) {
                 coord.x = x;
                 coord.y = y;
-                if (board.getPiece(coord) == null){
+                if (board.getPiece(coord) == null){ // TODO not taking any input
                     System.out.printf("|%s", " ");
                 } else System.out.printf("|%s", board.getPiece(coord).toString());
             }
