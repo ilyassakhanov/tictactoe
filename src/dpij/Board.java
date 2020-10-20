@@ -7,7 +7,12 @@ public class Board implements iBoard {
     //TODO multi-dimentional arrayList
     //ArrayList<iPlayer> arrBoard = new ArrayList();
     private int boardSize;
-    iPlayer[][] arrBoard = new iPlayer[5][5];
+
+    public Board(int boardSize) {
+        this.boardSize = boardSize;
+    }
+
+    iPlayer[][] arrBoard = new iPlayer[boardSize][boardSize];
 
     @Override
     public void setPiece(Coord coord, iPlayer player) {
@@ -36,9 +41,5 @@ public class Board implements iBoard {
         return arrBoard.length;
     }
 
-    @Override
-    public void setXSize(int boardSize) {
-        this.boardSize = boardSize;
-    }
 }
 

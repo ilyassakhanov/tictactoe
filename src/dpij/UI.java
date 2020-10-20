@@ -17,7 +17,7 @@ public class UI implements iUI{
                 coord.y = y;
                 if (board.getPiece(coord) == null){
                     System.out.printf("|%s", " ");
-                } else System.out.printf("|%s", board.getPiece(coord));
+                } else System.out.printf("|%s", board.getPiece(coord).toString());
             }
             System.out.print("|");
             System.out.println();
@@ -26,18 +26,6 @@ public class UI implements iUI{
                 System.out.print("--");
             }
             System.out.println();
-        }
-    }
-
-    // TODO interface design feasible?
-    public void askSize(iBoard board) {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter the board size (ex: 3 for a 3x3 board): ");
-        String sizeStr = sc.nextLine();
-        try {
-            board.setXSize(Integer.parseInt(sizeStr));
-        } catch (Exception e) {
-            System.out.println("Something went wrong, try again");
         }
     }
 
@@ -65,6 +53,6 @@ public class UI implements iUI{
 
     @Override
     public void showWinner(iPlayer winner) {
-        System.out.println("Player " + winner.getPiece()+ " is a winner!");
+        System.out.println("Player " + winner.toString() + " is a winner!");
     }
 }

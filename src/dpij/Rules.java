@@ -6,8 +6,7 @@ public class Rules implements iRules {
         //  new player (for draw)
         iPlayer winner = null;
         if(board.isFull()) {
-            iPlayer drawPlayer = new HumanPlayer();
-            return drawPlayer;
+            return new ComputerPlayer(board);
         }
         if(checkDiagonal(board) != null){
             winner = checkDiagonal(board);
@@ -17,7 +16,8 @@ public class Rules implements iRules {
         return winner;
     }
 
-    public iPlayer checkDiagonal(iBoard board) {
+    // TODO improvement?
+    private iPlayer checkDiagonal(iBoard board) {
         iPlayer player = null;
         Coord coord = new Coord();
         // check from top left to bottom right
@@ -57,10 +57,10 @@ public class Rules implements iRules {
         return player;
     }
 
-
-    public iPlayer checkHorizVert(iBoard board) {
+    // TODO good design?
+    private iPlayer checkHorizVert(iBoard board) {
         iPlayer player = null;
-        Coord coord = new Coord(); // TODO good design?
+        Coord coord = new Coord();
         for (int x = 0; x < board.getXSize(); x++) {
             coord.x = x;
             coord.y = 0;

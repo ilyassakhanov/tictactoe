@@ -5,5 +5,4 @@ public interface iBoard {
     iPlayer getPiece(Coord coord);
     boolean isFull();
     int getXSize();
-    void setXSize(int boardSize);
 }

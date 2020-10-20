@@ -9,38 +9,33 @@ public class TicTacToe implements iTicTacToe {
     iPlayer player2;
 
     public TicTacToe() {
-        board = new Board();
+        board = new Board(3);
         ui = new UI();
         rules = new Rules();
-        player1 = new HumanPlayer();
-        player2 = new HumanPlayer();
+        player1 = new HumanPlayer(ui);
+        player2 = new ComputerPlayer(board);
     }
 
     @Override
     public void startGame() {
 
-//        ui.askSize(board);
-//
-//        iPlayer currentPlayer = player2;
-//
-//        while (true) {
-//
-//            if (currentPlayer == player1) {
-//                currentPlayer = player2;
-//            } else {
-//                currentPlayer = player1;
-//            }
-//
-//            ui.showBoard(board);
-//            currentPlayer.makeMove();
-//
-//            iPlayer status = rules.checkWinner(board);
-//            if (status != null) {
-//                break;
-//            }
-//
-//        }
-       ui.showBoard(board);
+        iPlayer currentPlayer = player2;
+        iPlayer status = null;
+
+        while (status == null) {
+
+            if (currentPlayer == player1) {
+                currentPlayer = player2;
+            } else {
+                currentPlayer = player1;
+            }
+
+            ui.showBoard(board);
+            currentPlayer.makeMove();
+
+            status = rules.checkWinner(board);
+
+        }
 
     }
 
