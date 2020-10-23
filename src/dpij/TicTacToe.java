@@ -12,9 +12,8 @@ public class TicTacToe implements iTicTacToe {
         board = new Board(3);
         ui = new UI();
         rules = new Rules();
-        player1 = new HumanPlayer(ui);
-        player2 = new ComputerPlayer(board);
-        // TODO setPiece in HumanPlayer class but in the interface? (NullPointerException without setting the pieces)
+        player1 = new HumanPlayer(ui, new Piece('x'));
+        player2 = new HumanPlayer(ui, new Piece('o'));
     }
 
     @Override
@@ -24,18 +23,16 @@ public class TicTacToe implements iTicTacToe {
         iPlayer status = null;
 
         while (status == null) {
-
+            //TODO where to set pieces?
             if (currentPlayer == player1) {
                 currentPlayer = player2;
             } else {
                 currentPlayer = player1;
             }
-
             ui.showBoard(board);
-            board.setPiece(currentPlayer.makeMove(), currentPlayer);
-
+            board.setPiece(currentPlayer.makeMove(), currentPlayer); // TODO getInput instead of makeMove?
             status = rules.checkWinner(board);
-
+            //TODO connect UI to rules; make a method in rules that would check for collision of players in through top level logic
         }
 
     }

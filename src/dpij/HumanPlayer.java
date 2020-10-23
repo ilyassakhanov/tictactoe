@@ -5,8 +5,9 @@ public class HumanPlayer implements iPlayer {
     iUI ui;
     Piece piece;
 
-    public HumanPlayer(iUI ui) {
+    public HumanPlayer(iUI ui, Piece piece) {
         this.ui = ui;
+        this.piece = piece;
     }
 
     @Override
@@ -14,7 +15,7 @@ public class HumanPlayer implements iPlayer {
         return piece;
     }
 
-    // TODO dependency?
+    // TODO makeMove necessary in Player? getInput can go directly to TicTacToe
     @Override
     public Coord makeMove() {
         return ui.getInput();
@@ -22,14 +23,12 @@ public class HumanPlayer implements iPlayer {
 
     @Override
     public String toString() {
-        return String.valueOf(piece.pieceChar);
+        return String.valueOf(this.piece.pieceChar);
+
     }
 
     //TODO
-    public void setPiece(char pieceChar) {
-        Piece piece = new Piece();
-     //   piece.pieceChar = pieceChar;
-        piece.pieceChar = 'x';
-        this.piece = piece;
+    public void choosePiece(char pieceChar) {
+        this.piece = new Piece(pieceChar);
     }
 }

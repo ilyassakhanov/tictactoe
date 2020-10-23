@@ -5,19 +5,18 @@ public class Rules implements iRules {
     public iPlayer checkWinner(iBoard board) {
         //  new player (for draw)
         iPlayer winner = null;
-        if(board.isFull()) {
-            return new ComputerPlayer(board);
+        if (board.isFull()) {
+            iPlayer drawPlayer = new HumanPlayer(new UI(), new Piece('█'));
         }
-        if(checkDiagonal(board) != null){
+        if (checkDiagonal(board) != null) {
             winner = checkDiagonal(board);
-        } else if(checkHorizVert(board) != null){
+        } else if (checkHorizVert(board) != null) {
             winner = checkHorizVert(board);
         }
         return winner;
     }
 
-    // TODO improvement?
-    private iPlayer checkDiagonal(iBoard board) {
+    public iPlayer checkDiagonal(iBoard board) {
         iPlayer player = null;
         Coord coord = new Coord();
         // check from top left to bottom right
@@ -57,10 +56,10 @@ public class Rules implements iRules {
         return player;
     }
 
-    // TODO good design?
-    private iPlayer checkHorizVert(iBoard board) {
+
+    public iPlayer checkHorizVert(iBoard board) {
         iPlayer player = null;
-        Coord coord = new Coord();
+        Coord coord = new Coord(); //TODO good design?
         for (int x = 0; x < board.getXSize(); x++) {
             coord.x = x;
             coord.y = 0;
@@ -88,9 +87,10 @@ public class Rules implements iRules {
                         break;
                     }
                 }
-                return player;
+
             }
+
         }
-        return null;
+        return player;
     }
 }
