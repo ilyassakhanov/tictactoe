@@ -69,10 +69,10 @@ public class Rules implements iRules {
                     coord.x = x;
                     coord.y = y;
                     if (board.getPiece(coord) != player) {
+                        player = null;
                         break;
                     }
                 }
-                return player;
             }
         } //TODO copypasted code, any way of preventing it?
         for (int y = 0; y < board.getXSize(); y++) {
@@ -84,6 +84,7 @@ public class Rules implements iRules {
                     coord.x = x;
                     coord.y = y;
                     if (board.getPiece(coord) != player) {
+                        player = null;
                         break;
                     }
                 }
