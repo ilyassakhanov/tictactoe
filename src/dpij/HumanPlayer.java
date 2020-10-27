@@ -17,14 +17,13 @@ public class HumanPlayer implements iPlayer {
 
     // TODO makeMove necessary in Player? getInput can go directly to TicTacToe
     @Override
-    public Coord makeMove() {
-        return ui.getInput();
+    public Coord makeMove(iBoard board) {
+        return ui.getInput(board);
     }
 
     @Override
     public String toString() {
         return String.valueOf(this.piece.pieceChar);
-
     }
 
     //TODO

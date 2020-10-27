@@ -1,12 +1,10 @@
 package dpij;
 
-public class ComputerPlayer implements iPlayer{
+public class ComputerPlayer implements iPlayer {
 
-    iBoard board;
     Piece piece;
 
-    public ComputerPlayer(iBoard board) {
-        this.board = board;
+    public ComputerPlayer() {
     }
 
     @Override
@@ -16,7 +14,7 @@ public class ComputerPlayer implements iPlayer{
 
     // TODO randomize moves
     @Override
-    public Coord makeMove() {
+    public Coord makeMove(iBoard board) {
         return null;
     }
 

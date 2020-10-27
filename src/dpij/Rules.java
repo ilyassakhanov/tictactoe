@@ -1,17 +1,18 @@
 package dpij;
 
 public class Rules implements iRules {
+    //TODO Reimplement the logic of all methods with Rules 2
     @Override
     public iPlayer checkWinner(iBoard board) {
         //  new player (for draw)
         iPlayer winner = null;
         if (board.isFull()) {
-            iPlayer drawPlayer = new HumanPlayer(new UI(), new Piece('█'));
+            return new HumanPlayer(new UI(), new Piece('█'));
         }
         if (checkDiagonal(board) != null) {
             winner = checkDiagonal(board);
-        } else if (checkHorizVert(board) != null) {
-            winner = checkHorizVert(board);
+        } else if (checkVert(board) != null) {
+            winner = checkVert(board);
         }
         return winner;
     }
@@ -29,7 +30,7 @@ public class Rules implements iRules {
             } else {
                 // break loop if the diagonal has different players or no piece
                 // if it is the initial check, do not not break loop
-                if (board.getPiece(coord) != player && i != 0) {
+                if (board.getPiece(coord) != player) {
                     player = null;
                     break;
                 }
@@ -57,7 +58,8 @@ public class Rules implements iRules {
     }
 
 
-    public iPlayer checkHorizVert(iBoard board) {
+    public iPlayer checkVert(iBoard board) {
+        // Split to checkHoriz and checkVert
         iPlayer player = null;
         Coord coord = new Coord(); //TODO good design?
         for (int x = 0; x < board.getXSize(); x++) {
@@ -74,7 +76,14 @@ public class Rules implements iRules {
                     }
                 }
             }
-        } //TODO copypasted code, any way of preventing it?
+        }
+        return player;
+    }
+
+    //TODO copypasted code, any way of preventing it?
+    public iPlayer checkHoriz(iBoard board) {
+        iPlayer player = null;
+        Coord coord = new Coord();
         for (int y = 0; y < board.getXSize(); y++) {
             coord.x = 0;
             coord.y = y;

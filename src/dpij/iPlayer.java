@@ -2,5 +2,5 @@ package dpij;
 
 public interface iPlayer {
     Piece getPiece();
-    Coord makeMove();
+    Coord makeMove(iBoard board);
 }

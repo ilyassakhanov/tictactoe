@@ -30,10 +30,13 @@ public class TicTacToe implements iTicTacToe {
                 currentPlayer = player1;
             }
             ui.showBoard(board);
-            board.setPiece(currentPlayer.makeMove(), currentPlayer); // TODO getInput instead of makeMove?
+            board.setPiece(currentPlayer.makeMove(board), currentPlayer); // TODO getInput instead of makeMove?
             status = rules.checkWinner(board);
-            //TODO connect UI to rules; make a method in rules that would check for collision of players in through top level logic
         }
+        ui.showBoard(board);
+        if(status.getPiece().equals('█')){
+            ui.showDraw();
+        }else ui.showWinner(status);
 
     }
 

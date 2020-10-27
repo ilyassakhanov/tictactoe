@@ -29,24 +29,31 @@ public class UI implements iUI {
         }
     }
 
+    public boolean isEmpty(iBoard board, Coord coord) {
+        return board.getPiece(coord) == null;
+    }
+
     @Override
-    public Coord getInput() { //TODO connect it to rules through top level logic; add a loop so player can retry inputting coordinates
+    public Coord getInput(iBoard board) { //TODO connect it to rules through top level logic; add a loop so player can retry inputting coordinates
         Scanner sc = new Scanner(System.in);
         Coord coord = new Coord();
-        System.out.print("Enter the coordinate (ex: 1,2): ");
-        String inputStr = sc.nextLine();
-        if (inputStr.equals("exit")) {
-            System.out.println("Bye!");
-            System.exit(0);
-        }
-        try {
-            String[] arrInput = inputStr.split(",");
-            coord.x = Integer.parseInt(arrInput[0]) - 1;
-            coord.y = Integer.parseInt(arrInput[1]) - 1;
-            return coord;
-        } catch (Exception e) {
-            System.out.println("Something went wrong, try again");
-            return null;
+        while (true) {
+            System.out.print("Enter the coordinate (ex: 1,2): ");
+            String inputStr = sc.nextLine();
+            if (inputStr.equals("exit")) {
+                System.out.println("Bye!");
+                System.exit(0);
+            }
+            try {
+                String[] arrInput = inputStr.split(",");
+                coord.x = Integer.parseInt(arrInput[0]) - 1;
+                coord.y = Integer.parseInt(arrInput[1]) - 1;
+                if (isEmpty(board, coord)) {
+                    return coord;
+                } else System.out.println("This spot is occupied, try again");
+            } catch (Exception e) {
+                System.out.println("Something went wrong, try again");
+            }
         }
     }
 
